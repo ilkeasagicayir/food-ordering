@@ -1,12 +1,12 @@
 import React from 'react'
+import Campaigns from '../../components/ui/Campaigns'
 import Carousel from '../../components/ui/Carousel'
 
 const Index = () => {
   return (
-  <div className='relative'>
-    <Carousel>
-
-    </Carousel>
+  <div>
+    <Carousel/>
+    <Campaigns/>
   </div>
   )
 }

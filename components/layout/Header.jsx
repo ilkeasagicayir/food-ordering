@@ -11,8 +11,6 @@ const Header = () => {
 
   const router = useRouter()
 
-  console.log(router.asPath)
-
   return (
     <div className={`h-[5.5rem] z-50 relative ${router.asPath === "/" ? "bg-transparent" : "bg-secondary"}`}>
         <div className="container mx-auto text-white  flex justify-between items-center h-full">

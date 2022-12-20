@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Title from "./Title";
-import React from "react";
 import Slider from "react-slick";
 
 const Carousel = () => {
