@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Input from '../components/form/Input'
 import Header from '../components/layout/Header'
+import Reservation from '../components/ui/Reservation'
 import Home from "./home"
 
 export default function Index() {
@@ -17,9 +17,7 @@ export default function Index() {
       <Header>
       </Header>
       <Home/>
-      <div className="p-20 container mx-auto">
-        <Input/>
-      </div>
+      <Reservation />
     </div>
   )
 }
