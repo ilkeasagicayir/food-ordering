@@ -1,6 +1,7 @@
 import Input from "../form/Input"
 import Title from "./Title"
 import { useFormik } from 'formik'
+import { reservationSchema } from "../../schema/reservation"
 
 const Reservation = () => {
 
@@ -9,18 +10,18 @@ const Reservation = () => {
         actions.resetForm();
     }
 
-    const {values, handleSubmit, handleChange} = useFormik({
-        initialValues: {
-            fullName: "",
-            phoneNumber: "",
-            email: "",
-            people: "",
-            date: "",
-        },
-        onSubmit,
+    const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
+    useFormik({
+      initialValues: {
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        people: "",
+        date: "",
+      },
+      onSubmit,
+      validationSchema: reservationSchema,
     })
-
-    // console.log(values)
 
     const inputs = [
         {
@@ -29,6 +30,8 @@ const Reservation = () => {
             type:"text",
             placeholder: "Your Full Name",
             value: values.fullName,
+            errorMessage: errors.fullName,
+            touched: touched.fullName,
         },
         {
             id: 2,
@@ -36,6 +39,8 @@ const Reservation = () => {
             type:"number",
             placeholder: "Your Phone Number",
             value: values.phoneNumber,
+            errorMessage: errors.phoneNumber,
+            touched: touched.phoneNumber,
         },
         {
             id: 3,
@@ -43,6 +48,8 @@ const Reservation = () => {
             type: "email",
             placeholder: "Your Email Address",
             value: values.email,
+            errorMessage: errors.email,
+            touched: touched.email,
         },
         {
             id: 4,
@@ -50,12 +57,16 @@ const Reservation = () => {
             type: "number",
             placeholder: "How Many People?",
             value: values.people,
+            errorMessage: errors.people,
+            touched: touched.people,
         },
         {
             id: 5,
             name: "date",
             type: "datetime-local",
             value: values.date,
+            errorMessage: errors.date,
+            touched: touched.date,
         }
     ]
 
@@ -65,7 +76,7 @@ const Reservation = () => {
       <div className="flex justify-between flex-wrap-reverse gap-10">
         <form className="lg:flex-1 w-full" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-y-3">
-            {inputs.map((input) => (<Input key={input.id}{...input} onChange={handleChange} />))}
+            {inputs.map((input) => (<Input key={input.id}{...input} onChange={handleChange} onBlur={handleBlur} />))}
           </div>
           <button className="btn-primary mt-4" type="submit">BOOK NOW</button>
         </form>
