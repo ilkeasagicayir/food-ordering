@@ -2,7 +2,7 @@ import { ErrorMessage } from "formik";
 
 const Input = (props) => {
   const {type, errorMessage, touched, placeholder, ...inputProps} = props;
-  console.log(ErrorMessage);
+  
   return (
     <div className="w-full">
       <label className="relative block cursor-text w-full">
