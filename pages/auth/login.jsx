@@ -47,7 +47,7 @@ const Login = () => {
         onSubmit={handleSubmit}
       >
         <Title addClass="text-[40px] mb-6">Login</Title>
-        <div className="flex flex-col gap-y-2 w-full">
+        <div className="flex flex-col gap-y-3 w-full">
           {inputs.map((input) => (
             <Input
               key={input.id}
