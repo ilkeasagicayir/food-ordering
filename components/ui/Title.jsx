@@ -1,7 +1,5 @@
 const Title = ({ children, addClass }) => {
-  return (
-    <div className={`${addClass} font-dancing font-bold`}>{children}</div>
-  )
-}
+  return <div className={`${addClass} font-dancing font-bold`}>{children}</div>;
+};
 
-export default Title
+export default Title;

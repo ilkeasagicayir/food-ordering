@@ -1,14 +1,14 @@
 import { ErrorMessage } from "formik";
 
 const Input = (props) => {
-  const {type, errorMessage, touched, placeholder, ...inputProps} = props;
-  
+  const { type, errorMessage, touched, placeholder, ...inputProps } = props;
+
   return (
     <div className="w-full">
       <label className="relative block cursor-text w-full">
         <input
-           type={type}
-           className={`h-14 w-full border outline-none px-4 peer 
+          type={type}
+          className={`h-14 w-full border outline-none px-4 peer 
            ${type !== "datetime-local" && "pt-2"}
            ${touched && errorMessage ? "border-red-500" : "border-primary"}
            `}
@@ -21,7 +21,7 @@ const Input = (props) => {
           </span>
         )}
       </label>
-      {touched && <span className="text-xs text-danger">{errorMessage}</span> }
+      {touched && <span className="text-xs text-danger">{errorMessage}</span>}
     </div>
   );
 };
