@@ -19,7 +19,8 @@ module.exports = {
       colors: {
         primary: "#ffbe33",
         secondary: "#222831",
-        danger: "#ff0000",
+        danger: "#d80000",
+        success: "#00d800",
       },
       fontFamily: {
         dancing: ["Dancing Script", "cursive"],

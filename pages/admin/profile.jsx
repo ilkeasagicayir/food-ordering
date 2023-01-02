@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { Order } from "../../components/profile/Order";
+import Order from "../../components/admin/Order";
 import Products from "../../components/admin/Products";
 
 const Profile = () => {
