@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import Title from "../../components/ui/Title";
+import { addProducts } from "../../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const itemsExtra = [
   {
@@ -20,12 +22,31 @@ const itemsExtra = [
   },
 ];
 
+const foodItems = [
+  {
+    id: 1,
+    name: "Pizza",
+    price: 10,
+    desc: "Lorem ipsum dolor sit amet consectetur",
+    extraOptions: [
+      {
+        id: 1,
+        name: "Extra 1",
+        price: 1,
+      },
+    ],
+  },
+];
+
 const Index = () => {
   const [prices, setPrices] = useState([10, 20, 30]);
   const [price, setPrice] = useState(prices[0]);
   const [size, setSize] = useState(0);
   const [extraItems, setExtraItems] = useState(itemsExtra);
   const [extras, setExtras] = useState([]);
+  const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
 
   const handleSize = (sizeIndex) => {
     const difference = prices[sizeIndex] - prices[size];
@@ -47,6 +68,14 @@ const Index = () => {
       setExtras(extras.filter((extra) => extra.id !== item.id));
     }
   };
+
+  const handleClick = () => {
+    dispatch(
+      addProducts({ ...foodItems[0], size, extras, price, quantity: 1 })
+    );
+  };
+
+  console.log(cart);
 
   return (
     <div className="flex items-center md:h-[calc(100vh_-_88px)] gap-5 py-20 flex-wrap ">
@@ -101,7 +130,7 @@ const Index = () => {
           </div>
         </div>
         <div className="flex gap-x-4 my-6 md:justify-start justify-center">
-        {extraItems.map((item) => (
+          {extraItems.map((item) => (
             <label className="flex items-center gap-x-1" key={item.id}>
               <input
                 type="checkbox"
@@ -112,7 +141,7 @@ const Index = () => {
             </label>
           ))}
         </div>
-        <button className="btn-primary">Add to Cart</button>
+        <button className="btn-primary" onClick={handleClick}>Add to Cart</button>
       </div>
     </div>
   );
