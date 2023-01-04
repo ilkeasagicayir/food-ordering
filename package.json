@@ -12,6 +12,7 @@
     "@next/font": "13.0.7",
     "@reduxjs/toolkit": "^1.9.1",
     "formik": "^2.2.9",
+    "mongoose": "^6.8.2",
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
