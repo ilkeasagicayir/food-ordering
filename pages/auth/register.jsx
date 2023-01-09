@@ -20,7 +20,7 @@ const Register = () => {
       toast.error(error.response.data.message);
       console.log(error);
     }
-    // actions.resetForm();
+    actions.resetForm();
   };
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
