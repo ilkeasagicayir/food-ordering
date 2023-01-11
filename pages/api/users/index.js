@@ -3,7 +3,7 @@ import dbConnect from "../../../util/dbConnect";
 
 const handler = async (req, res) => {
     await dbConnect();
-    res.status(200).json({ message: "Successful" });
+    // res.status(200).json({ message: "Successful" });
     const {method} = req;
 
     if(method === 'GET') {
