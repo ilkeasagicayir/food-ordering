@@ -17,7 +17,7 @@ const Register = () => {
       );
       if (res.status === 200) {
         toast.success("User created successfully");
-        push("/auth/login");
+        push('/auth/login');
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -36,7 +36,6 @@ const Register = () => {
       onSubmit,
       validationSchema: registerSchema,
     });
-
   const inputs = [
     {
       id: 1,
@@ -75,7 +74,7 @@ const Register = () => {
       touched: touched.confirmPassword,
     },
   ];
-
+  
   return (
     <div className="container mx-auto">
       <form

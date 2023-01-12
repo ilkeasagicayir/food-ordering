@@ -1,16 +1,16 @@
-import { getSession, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import Image from "next/image";
-import { useState } from "react";
 import Account from "../../components/profile/Account";
 import Password from "../../components/profile/Password";
 import { Order } from "../../components/profile/Order";
+
+import { getSession, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Profile = ({ session }) => {
+const Profile = ({session}) => {
   const [tabs, setTabs] = useState(0);
-  const { push } = useRouter();
+  const {push} = useRouter();
 
   const handleSignOut = () => {
     if (confirm("Are you sure you want to sign out?")) {
@@ -67,7 +67,9 @@ const Profile = ({ session }) => {
             <button className="ml-1">Orders</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all `}
+            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
+              tabs === 3 && "bg-primary text-white"
+            }`}
             onClick={handleSignOut}
           >
             <i className="fa fa-sign-out"></i>
@@ -94,13 +96,14 @@ export async function getServerSideProps({ req, params }) {
     };
   }
 
-  const user = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`
-  );
+  const user = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`)
 
   return {
-    props: { session },
+    props: {
+      session,
+    },
   };
 }
+
 
 export default Profile;

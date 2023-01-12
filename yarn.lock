@@ -1667,10 +1667,10 @@
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
   "version" "3.3.4"
 
-"next-auth@^4", "next-auth@^4.18.7":
-  "integrity" "sha512-kR3s1JVPMaDuSAlFxcGyv7Ec3fdE6za71r1F77IOII5zJmW2wfkIA2xj223fM0D20ip2pzFpHfk/qN4L6l5XMA=="
-  "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-4.18.7.tgz"
-  "version" "4.18.7"
+"next-auth@^4", "next-auth@^4.18.8":
+  "integrity" "sha512-USP8ihmvB7iCGtkS0+toe2QPrzdbZfkydQZX56JOI9Ft5n/BardOXh3D4wQ2An+vpq/jDKojGlgfv21wVElW7A=="
+  "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-4.18.8.tgz"
+  "version" "4.18.8"
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"

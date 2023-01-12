@@ -3,20 +3,18 @@ import Link from "next/link";
 import Input from "../../components/form/Input";
 import Title from "../../components/ui/Title";
 import { loginSchema } from "../../schema/login";
-import { useSession, signIn, getSession } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  const { data: session } = useSession();
   const { push } = useRouter();
-
   const onSubmit = async (values, actions) => {
     const { email, password } = values;
     let options = { redirect: false, email, password };
     try {
       const res = await signIn("credentials", options);
       actions.resetForm();
-      push("/profile/63bc75ed896370f54aa71851");
+      push("/profile/63bf3fd83491e226afb98633");
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +29,6 @@ const Login = () => {
       onSubmit,
       validationSchema: loginSchema,
     });
-
   const inputs = [
     {
       id: 1,
@@ -52,7 +49,6 @@ const Login = () => {
       touched: touched.password,
     },
   ];
-
   return (
     <div className="container mx-auto">
       <form
@@ -95,14 +91,16 @@ const Login = () => {
 
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
+
   if (session) {
     return {
       redirect: {
-        destination: "/profile/63bc75ed896370f54aa71851",
+        destination: "/profile/63bf3fd83491e226afb98633",
         permanent: false,
       },
     };
   }
+
   return {
     props: {},
   };

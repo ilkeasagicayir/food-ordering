@@ -11,7 +11,7 @@ const handler = async (req, res) => {
   if (method === "GET") {
     try {
       const user = await User.findById(id);
-      res.status(200).json(user);
+      res.status(200).json({ user });
     } catch (error) {
       console.log(error);
     }
