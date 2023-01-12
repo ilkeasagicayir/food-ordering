@@ -3,22 +3,42 @@ import Link from "next/link";
 import Input from "../../components/form/Input";
 import Title from "../../components/ui/Title";
 import { loginSchema } from "../../schema/login";
-import { signIn, getSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Login = () => {
+  const { data: session } = useSession();
   const { push } = useRouter();
+  const [currentUser, setCurrentUser] = useState();
+
   const onSubmit = async (values, actions) => {
     const { email, password } = values;
     let options = { redirect: false, email, password };
     try {
       const res = await signIn("credentials", options);
       actions.resetForm();
-      push("/profile/63bf3fd83491e226afb98633");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+        setCurrentUser(
+          res.data?.find((user) => user.email === session?.user?.email)
+        );
+        push("/profile/" + currentUser?._id);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUser();
+  }, [session, push, currentUser]);
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
@@ -79,8 +99,8 @@ const Login = () => {
             GITHUB
           </button>
           <Link href="/auth/register">
-            <span className="text-sm  mt-2 underline cursor-pointer text-secondary flex flex-col items-center">
-              Do you have no account?
+            <span className="text-sm underline cursor-pointer text-secondary">
+              Do you no have a account?
             </span>
           </Link>
         </div>
@@ -88,22 +108,24 @@ const Login = () => {
     </div>
   );
 };
-
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
 
-  if (session) {
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+  const user = res.data?.user?.find((user) => user.email === session?.user.email);
+  
+  if (session && user) {
     return {
       redirect: {
-        destination: "/profile/63bf3fd83491e226afb98633",
+        destination: "/profile/" + user._id,
         permanent: false,
       },
     };
   }
-
   return {
-    props: {},
+    props: {
+      user: user ? user.data : null,
+    },
   };
 }
-
 export default Login;

@@ -1,17 +1,27 @@
+import React from "react";
 import Input from "../../components/form/Input";
 import Title from "../../components/ui/Title";
 import { useFormik } from "formik";
-import { newPasswordSchema } from "../../schema/newPassword.js";
+import { registerSchema } from "../../schema/register";
+import { newPasswordSchema } from "../../schema/newPassword";
+import axios from "axios";
 
-const Password = () => {
+const Password = ({ user }) => {
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    actions.resetForm();
-    console.log("values", values);
+    try {
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`,
+        values
+      );
+      actions.resetForm();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
+      enableReinitialize: true,
       initialValues: {
         password: "",
         confirmPassword: "",
@@ -33,13 +43,12 @@ const Password = () => {
       id: 2,
       name: "confirmPassword",
       type: "password",
-      placeholder: "Confirm Your Password",
+      placeholder: "Your Confirm Password",
       value: values.confirmPassword,
       errorMessage: errors.confirmPassword,
       touched: touched.confirmPassword,
     },
   ];
-
   return (
     <form className="lg:p-8 flex-1 lg:mt-0 mt-5" onSubmit={handleSubmit}>
       <Title addClass="text-[40px]">Password</Title>
@@ -59,5 +68,4 @@ const Password = () => {
     </form>
   );
 };
-
 export default Password;
