@@ -16,7 +16,7 @@
     "cookie": "^0.5.0",
     "formik": "^2.2.9",
     "mongodb": "^4.9.1",
-    "mongoose": "^6.5.4",
+    "mongoose": "^6.8.3",
     "next": "12.2.5",
     "next-auth": "^4.10.3",
     "nprogress": "^0.2.0",
