@@ -13,17 +13,20 @@ const Profile = ({ user }) => {
   const [tabs, setTabs] = useState(0);
   const { push } = useRouter();
 
+  console.log(session);
+
   const handleSignOut = () => {
     if (confirm("Are you sure you want to sign out?")) {
       signOut({ redirect: false });
       push("/auth/login");
     }
   };
-  useEffect(() => {
+  
+  /* useEffect(() => {
     if (!session) {
       push("/auth/login");
     }
-  }, [session, push]);
+  }, [session, push]); */
   return (
     <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10">
       <div className="lg:w-80 w-100 flex-shrink-0">

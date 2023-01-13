@@ -12,8 +12,8 @@ const Account = ({ user }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`,
         values
       );
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
     actions.resetForm();
   };

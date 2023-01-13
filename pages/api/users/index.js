@@ -9,7 +9,7 @@ const handler = async (req, res) => {
   if (method === "GET") {
     try {
       const users = await User.find({});
-      res.status(200).json({ users });
+      res.status(200).json(users);
     } catch (error) {
       console.log(error);
     }
@@ -19,8 +19,8 @@ const handler = async (req, res) => {
     try {
       const newUser = await User.create(req.body);
       res.status(200).json(newUser);
-      
-  console.log(newUser)
+
+      console.log(newUser)
     } catch (error) {
       console.log(error);
     }
