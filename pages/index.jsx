@@ -1,9 +1,10 @@
-import Head from 'next/head'
-import Footer from '../components/layout/Footer'
-import Header from '../components/layout/Header'
-import Home from "./home"
+import Head from "next/head";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import Home from "./home";
+import axios from "axios";
 
-export default function Index() {
+export default function Index({ categoryList }) {
   return (
     <div>
       <Head>
@@ -12,9 +13,22 @@ export default function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="True" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="True"
+        />
       </Head>
-      <Home/>
+      <Home categoryList={categoryList} />
     </div>
-  )
+  );
 }
+
+export const getServerSideProps = async () => {
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+  return {
+    props: {
+      categoryList: res.data ? res.data : [],
+    },
+  };
+};
