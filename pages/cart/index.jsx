@@ -40,7 +40,7 @@ const Cart = () => {
                   </td>
                   <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
                     {product.extras.map((item) => (
-                      <span key={item.id}>{item.name}, </span>
+                      <span key={item.id}>{item.text}, </span>
                     ))}
                   </td>
                   <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
@@ -64,7 +64,10 @@ const Cart = () => {
           </div>
 
           <div>
-            <button className="btn-primary mt-4 md:w-auto w-52" onClick={() => dispatch(reset())}>
+            <button
+              className="btn-primary mt-4 md:w-auto w-52"
+              onClick={() => dispatch(reset())}
+            >
               CHECKOUT NOW!
             </button>
           </div>
