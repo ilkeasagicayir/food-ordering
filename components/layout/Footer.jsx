@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Title from "../ui/Title";
-
 const Footer = () => {
   const [footer, setFooter] = useState([]);
-
   useEffect(() => {
     const getFooter = async () => {
       try {
@@ -18,7 +16,7 @@ const Footer = () => {
     };
     getFooter();
   }, []);
-  console.log(footer);
+
   return (
     <div className="bg-secondary text-white">
       <div className="container mx-auto pt-16 pb-6">
@@ -76,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="text-center mt-10">
-          © 2022 All Rights Reserved By Free Html Templates
+          © 2023 Feane Fast Food Restaurant
         </p>
       </div>
     </div>
