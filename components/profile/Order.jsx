@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
+  const status = ["preparing", "on the way", "delivered"];
   const [currentUser, setCurrentUser] = useState([]);
 
   const { data: session } = useSession();
@@ -69,19 +70,19 @@ const Order = () => {
                 key={order?._id}
               >
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center">
-                  <span>63107...</span>
+                  {order?._id.substring(0, 6)}...
                 </td>
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                  Adana
+                  {order?.address}
                 </td>
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                  01-09-2022
+                  {new Date(order?.createdAt).toLocaleDateString()}
                 </td>
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                  $18
+                  $ {order?.total}
                 </td>
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                  preparing
+                  {status[order?.status]}
                 </td>
               </tr>
             ))}
