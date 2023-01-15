@@ -14,14 +14,14 @@ const Header = () => {
 
   return (
     <div
-      className={`h-[5.5rem] z-50 fixed w-full ${
-        router.asPath === "/" ? "bg-transparent" : "bg-secondary"
+      className={`h-[5.5rem] z-50 relative w-full ${
+        router.asPath === "/" ? "bg-transparent" : "bg-secondary !fixed"
       }`}
     >
       <div className="container mx-auto text-white flex justify-between items-center h-full">
         <Logo />
         <nav
-          className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden  ${
+          className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden z-50 ${
             isMenuModal === true && "!grid place-content-center"
           }`}
         >
@@ -30,6 +30,7 @@ const Header = () => {
               className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
                 router.asPath === "/" && "text-primary"
               }`}
+              onClick={() => setIsMenuModal(false)}
             >
               <Link href="/">Home</Link>
             </li>
@@ -37,6 +38,7 @@ const Header = () => {
               className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
                 router.asPath === "/menu" && "text-primary"
               }`}
+              onClick={() => setIsMenuModal(false)}
             >
               <Link href="/menu">Menu</Link>
             </li>
@@ -44,6 +46,7 @@ const Header = () => {
               className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
                 router.asPath === "/about" && "text-primary"
               }`}
+              onClick={() => setIsMenuModal(false)}
             >
               <Link href="/about">About</Link>
             </li>
@@ -51,6 +54,7 @@ const Header = () => {
               className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
                 router.asPath === "/reservation" && "text-primary"
               }`}
+              onClick={() => setIsMenuModal(false)}
             >
               <Link href="/reservation">Book Table</Link>
             </li>
@@ -85,7 +89,7 @@ const Header = () => {
                 }`}
                 size={18}
               />
-              <span className="w-4 h-4 text-xs grid place-content-center rounded-full bg-primary absolute -top-2 -right-3 text-black font-bold">
+              <span className="px-[5px] text-[10px] rounded-full bg-primary absolute -top-2 -right-3 text-black inline-flex items-center justify-center font-bold">
                 {cart.products.length === 0 ? "0" : cart.products.length}
               </span>
             </span>
