@@ -163,15 +163,17 @@ const Footer = () => {
           </button>
         </div>
         <ul className="flex items-center gap-6">
-          {socialMediaLinks?.map((item, index) => (
+          {socialMediaLinks?.map(({ icon }, index) => (
             <li key={index} className="flex items-center">
-              <i className={`${item.icon} text-2xl`}></i>
+              <i className={`${icon} text-2xl`}></i>
               <button
                 className="text-danger"
-                onClick={() => {
-                  setIcons((prev) => prev.filter((item, i) => i !== index));
-                }}
                 type="button"
+                onClick={() => {
+                  setSocialMediaLinks((prev) =>
+                    prev.filter((_, idx) => idx !== index)
+                  );
+                }}
               >
                 <i className="fa fa-trash text-xl ml-2"></i>
               </button>
