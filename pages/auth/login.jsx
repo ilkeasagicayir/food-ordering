@@ -6,6 +6,8 @@ import { loginSchema } from "../../schema/login";
 import { getSession, signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Head from "next/head";
+
 const Login = () => {
   const { data: session } = useSession();
   const { push } = useRouter();
@@ -60,6 +62,9 @@ const Login = () => {
   ];
   return (
     <div className="container mx-auto">
+      <Head>
+        <title>Login</title>
+      </Head>
       <form
         className="flex flex-col items-center my-20 md:w-1/2 w-full mx-auto"
         onSubmit={handleSubmit}

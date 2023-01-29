@@ -100,7 +100,7 @@ const Header = () => {
               size={18}
             />
           </button>
-          <a href="#" className="md:inline-block hidden sm">
+          <a href="http://localhost:3000/menu" className="md:inline-block hidden sm">
             <button className="btn-primary">Order Online</button>
           </a>
           <button

@@ -6,6 +6,7 @@ import Title from "../../components/ui/Title";
 import { adminSchema } from "../../schema/admin";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Login = () => {
   const { push } = useRouter();
@@ -59,6 +60,9 @@ const Login = () => {
 
   return (
     <div className="container mx-auto py-3">
+      <Head>
+        <title>Admin Login</title>
+      </Head>
       <form
         className="flex flex-col items-center my-20 md:w-1/2 w-full mx-auto"
         onSubmit={handleSubmit}

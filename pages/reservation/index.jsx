@@ -1,11 +1,15 @@
-import Reservation from "../../components/ui/Reservation"
+import Reservation from "../../components/ui/Reservation";
+import Head from "next/head";
 
 const Index = () => {
   return (
     <div>
-        <Reservation />
+      <Head>
+        <title>Feane Restaurant</title>
+      </Head>
+      <Reservation />
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

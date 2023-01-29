@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import AddProduct from "../../components/admin/AddProduct";
+import Head from "next/head";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
@@ -32,6 +33,9 @@ const Profile = () => {
   return (
     <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10">
       <div className="lg:w-80 w-100 p-3 flex-shrink-0">
+      <Head>
+        <title>Admin</title>
+      </Head>
         <div className="relative flex flex-col items-center px-10 py-5 border border-b-0">
           <Image
             src="/images/admin.png"

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Cart = ({ userList }) => {
   const { data: session } = useSession();
@@ -52,6 +53,9 @@ const Cart = ({ userList }) => {
       <div className="flex justify-between items-center md:flex-row flex-col">
         <div className="md:min-h-[calc(100vh_-_433px)] flex items-center flex-1 p-10 overflow-x-auto w-full">
           <div className="max-h-52 overflow-auto w-full">
+            <Head>
+              <title>Cart</title>
+            </Head>
             {cart?.products?.length > 0 ? (
               <table className="w-full text-sm text-center text-gray-500 min-w-[1000px]">
                 <thead className="text-xs text-gray-400 uppercase bg-gray-700">
@@ -103,7 +107,9 @@ const Cart = ({ userList }) => {
                 </tbody>
               </table>
             ) : (
-              <p className="text-center font-semibold">There is no product...</p>
+              <p className="text-center font-semibold">
+                There is no product...
+              </p>
             )}
           </div>
         </div>

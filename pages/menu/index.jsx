@@ -1,9 +1,13 @@
 import MenuWrapper from "../../components/product/MenuWrapper";
+import Head from "next/head";
 import axios from "axios";
 
 const Index = ({ categoryList, productList }) => {
   return (
     <div className="pt-10">
+      <Head>
+        <title>Feane Restaurant</title>
+      </Head>
       <MenuWrapper categoryList={categoryList} productList={productList} />
     </div>
   );

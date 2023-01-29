@@ -1,12 +1,16 @@
-import React from 'react'
-import About from '../../components/ui/About'
+import Head from "next/head";
+import React from "react";
+import About from "../../components/ui/About";
 
 const Index = () => {
   return (
     <div>
-        <About />
+      <Head>
+        <title>Feane Restaurant</title>
+      </Head>
+      <About />
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
